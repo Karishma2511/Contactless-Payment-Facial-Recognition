@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Feed</title>
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+    <script type="text/javascript">
+    const socket = io();
+
+    // When a payment status is received from the server
+    socket.on('payment_status', function (data) {
+        console.log('Received payment status:', data.status); // Add this line for debugging
+
+        if (data.status === 'success') {
+            alert('Payment Successful!');
+        } else {
+            alert('Payment Failed!');
+        }
+    });
+</script>
+
+</head>
+
+<body>
+    <h1>Video Feed</h1>
+    <img id="video_feed" src="{{ url_for('video_feed') }}" alt="Video Feed" style="width: 640px; height: 480px;">
+<h4>Give payment confirmation and enter the amount in command line interface</h4>
+</body>
+
+</html>
